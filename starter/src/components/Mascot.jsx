@@ -32,18 +32,22 @@ export default function Mascot(props) {
             });
     }
 
-    return image ? (
+    return (
         <View style={{ padding: 32 }}>
-            <Pressable onPress={displayMessage}>
-                <Image
-                    style={{ width: 100, height: 100 }}
-                    source={image.imgSrc}
-                />
-            </Pressable>
-            <Text style={{ fontSize: 40 }}>{image.name}</Text>
-            <Text style={{ fontSize: 16 }}>{image.quote}</Text>
+            {image ? (
+                <>
+                    <Pressable onPress={displayMessage}>
+                        <Image
+                            style={{ width: 100, height: 100 }}
+                            source={{ uri: image.imgSrc }}
+                        />
+                    </Pressable>
+                    <Text style={{ fontSize: 40 }}>{image.name}</Text>
+                    <Text style={{ fontSize: 16 }}>{image.quote}</Text>
+                </>
+            ) : (
+                <Text>Loading...</Text>
+            )}
         </View>
-    ) : (
-        <Text>Loading...</Text>
     );
 }
